@@ -1,0 +1,65 @@
+/* خلفية الصفحة */
+body {
+  background-color: #121212;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* صندوق الآلة الحاسبة */
+.calculator {
+  background: #282c34;
+  padding: 30px 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  width: 320px;
+}
+
+/* شاشة العرض */
+#display {
+  width: 100%;
+  height: 60px;
+  font-size: 32px;
+  text-align: right;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 15px;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+/* شبكة الأزرار */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+/* تصميم الأزرار */
+button {
+  font-size: 24px;
+  padding: 18px 0;
+  border: none;
+  border-radius: 12px;
+  background: #3a3f58;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  transition: background-color 0.25s ease, transform 0.1s ease;
+}
+
+/* تأثير عند الضغط */
+button:active {
+  transform: scale(0.95);
+}
+
+/* تأثير عند المرور */
+button:hover {
+  background-color: #5c619d;
+}
