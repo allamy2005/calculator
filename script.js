@@ -37,3 +37,5 @@ document.getElementById("display").addEventListener("keydown", function(event) {
     calculateResult();
   }
 });
+
+// ةسؤة
