@@ -1,65 +1,117 @@
-/* خلفية الصفحة */
-body {
-  background-color: #121212;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Tech Blue Theme — Jaafar Tech */
+:root{
+  --bg:#0b1020;
+  --panel:#0f1730cc;
+  --accent:#3aa0ff;
+  --accent-2:#7cc3ff;
+  --text:#eaf2ff;
+  --muted:#a8b3c7;
+  --danger:#ff5c7a;
+  --ok:#2ee6a6;
+  --shadow: 0 10px 30px rgba(0,0,0,.35), 0 0 40px rgba(58,160,255,.12) inset;
 }
 
-/* صندوق الآلة الحاسبة */
-.calculator {
-  background: #282c34;
-  padding: 30px 25px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-  width: 320px;
+*{box-sizing:border-box}
+html,body{
+  height:100%;
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans", "Helvetica Neue", Arial;
+  background:
+    radial-gradient(1000px 400px at 10% 0%, #11224a 0%, transparent 60%),
+    radial-gradient(900px 600px at 100% 100%, #06102a 0%, transparent 60%),
+    var(--bg);
+  color:var(--text);
 }
 
-/* شاشة العرض */
-#display {
-  width: 100%;
-  height: 60px;
-  font-size: 32px;
-  text-align: right;
-  margin-bottom: 20px;
-  border: none;
-  border-radius: 12px;
-  padding: 10px 15px;
-  background-color: #1e1e1e;
-  color: #ffffff;
-  box-sizing: border-box;
-  user-select: none;
+.calculator{
+  width:min(380px, 94vw);
+  margin:6vh auto;
+  padding:18px;
+  background:linear-gradient(180deg, #0e1a38 0%, #0a1328 100%);
+  border:1px solid #1f2d57;
+  border-radius:22px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  position:relative;
 }
 
-/* شبكة الأزرار */
-.buttons {
-  display: grid;
+.calculator:before{
+  content:"";
+  position:absolute; inset:-2px;
+  border-radius:24px;
+  padding:2px;
+  background: linear-gradient(135deg, rgba(58,160,255,.35), rgba(46,230,166,.25));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  pointer-events:none;
+}
+
+#display{
+  width:100%;
+  height:68px;
+  padding:14px 16px;
+  font-size:26px;
+  color:var(--text);
+  background: #0b1531;
+  border:1px solid #1c2a53;
+  border-radius:14px;
+  outline:none;
+  box-shadow: inset 0 0 0 1px rgba(58,160,255,.06), inset 0 -10px 25px rgba(0,0,0,.35);
+  caret-color: var(--accent);
+}
+
+#display.error{
+  border-color: var(--danger);
+  box-shadow: 0 0 0 2px rgba(255,92,122,.15);
+  animation: shake .35s linear;
+}
+@keyframes shake{
+  10%,90%{transform: translateX(-1px)}
+  20%,80%{transform: translateX(2px)}
+  30%,50%,70%{transform: translateX(-4px)}
+  40%,60%{transform: translateX(4px)}
+}
+
+.buttons{
+  display:grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
+  gap:10px;
+  margin-top:14px;
 }
 
-/* تصميم الأزرار */
-button {
-  font-size: 24px;
-  padding: 18px 0;
-  border: none;
-  border-radius: 12px;
-  background: #3a3f58;
-  color: #fff;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-  transition: background-color 0.25s ease, transform 0.1s ease;
+button{
+  height:56px;
+  font-size:18px;
+  font-weight:600;
+  color:var(--text);
+  background: #101b3a;
+  border:1px solid #1e2d5a;
+  border-radius:14px;
+  cursor:pointer;
+  transition: transform .06s ease, border-color .2s, background .2s, box-shadow .2s;
+  box-shadow: 0 2px 0 rgba(58,160,255,.25) inset, 0 10px 20px rgba(0,0,0,.25);
 }
 
-/* تأثير عند الضغط */
-button:active {
-  transform: scale(0.95);
+button:hover{ border-color:#2b4e91 }
+button:active{
+  transform: translateY(2px) scale(.99);
+  box-shadow: 0 1px 0 rgba(58,160,255,.35) inset, 0 6px 10px rgba(0,0,0,.25);
 }
 
-/* تأثير عند المرور */
-button:hover {
-  background-color: #5c619d;
+button.op{ background:#0f2146 }
+button.eq{ background: linear-gradient(180deg, var(--accent), var(--accent-2)); color:#041023; }
+button.eq:hover{ filter: brightness(1.05) }
+button.eq:active{ filter: brightness(.98) }
+
+button.danger{ color:#ffd7de; border-color:#52263a; background:#2a0f1b }
+
+.footer-row{
+  grid-column: 1 / -1;
+  display:flex; gap:10px; margin-top:6px;
+}
+
+/* small screen tweaks */
+@media (max-width:360px){
+  button{ height:52px; font-size:17px }
+  #display{ height:64px; font-size:24px }
 }
